@@ -160,6 +160,16 @@ class _CalendarState extends State<Calendar> {
         [];
   }
 
+  @override
+  void didUpdateWidget(oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.events != widget.events) {
+      _selectedEvents = widget.events?[DateTime(
+          _selectedDate.year, _selectedDate.month, _selectedDate.day)] ??
+          [];
+    }
+  }
+
   Widget get nameAndIconRow {
     var todayIcon;
     var leftArrow;
